@@ -1,0 +1,37 @@
+v4.2.0
+@djaeckle djaeckle released this on 13 May
+
+6. Changelog
+
+General
+
+This version has passed all LoRa-Alliance compliance tests.
+Update STM32L1xx_HAL_Driver version to 1.5. Update related drivers and implementations accordingly.
+
+REMARK: This change implies that the time base had to be changed from microseconds to milliseconds.
+
+Corrected the frequency check condition for // ERRATA 2.1 - Sensitivity Optimization with a 500 kHz Bandwidth
+
+Optimize radio drivers regarding FSK PER
+Resolve issue when calling SX127xInit function more than once
+Add a definition for the LoRaWAN device address. Add an IEEE_OUI for the LoRaWAN device EUI.
+Add a definition for the default datarate.
+Issue(#66) correction of functions SX1276SetOpMode and SX1272SetOpMode.
+Issue(#68): Fix for low level RF switch control.
+Increase RTC tick frequency for higher resolution.
+Update the radio wake up time.
+LoRaWAN
+
+Issue(#56) correction
+Update channel mask handling for US915 hybrid mode to support any block in the channel mask.
+Issue(#63) correct the maximum payload length in RX mode.
+Fix Tx power setting loss for repeated join requests on US band.
+Introduce individual MIN and MAX datarates for RX and TX.
+Add the possibility to set and get the ChannelsDefaultDatarate.
+Optimization of the RX symbol timeout.
+Issue(#59): Add the possibility to set the uplink and downlink counter.
+Replace definition LORAMAC_DEFAULT_DATARATE by ChannelsDefaultDatarate in LoRaMacChannelAdd.
+Issue(#72): Fix of possible array overrun in LoRaMacChannelRemove.
+Introduce a new status MAC_RX_ABORT. Reset MAC_TX_RUNNING only in OnMacStateCheckTimerEvent.
+Accept MAC information of duplicated, confirmed downlinks.
+Issue(#74): Drop frames with a downlink counter difference greater or equal to MAX_FCNT_GAP.
